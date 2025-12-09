@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
+import { Cat } from './entities/cat.entity';
 import { CatsService } from './cats.service';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
@@ -21,12 +22,12 @@ export class CatsController {
   }
 
   @Get()
-  findAll() {
+  findAll(): Promise<Cat[]> {
     return this.catsService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id') id: string): Promise<Cat | null> {
     return this.catsService.findOne(+id);
   }
 
