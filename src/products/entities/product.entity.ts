@@ -12,7 +12,7 @@ export class Product {
   sku: string;
 
   @Column()
-  price: number;
+  price: string;
 
   @Column()
   description: string;

@@ -15,6 +15,7 @@ import { Product } from './entities/product.entity';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { AuthGuard } from '@nestjs/passport';
+// import { paginate } from '@/common/utils/pagination.util';
 
 @UseGuards(AuthGuard('jwt'))
 @Controller('products')
@@ -36,7 +37,7 @@ export class ProductController {
   }
 
   @Get()
-  findAll() {
+  findAll(page: number, limit: number) {
     return this.productService.findAll();
   }
 
